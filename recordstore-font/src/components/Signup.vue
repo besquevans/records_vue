@@ -15,6 +15,7 @@
             placeholder="test@mail.com"
           />
         </div>
+
         <div class="mb-6">
           <label for="password" class="label">Password</label>
           <input
@@ -25,14 +26,17 @@
             placeholder="Password"
           />
         </div>
+
         <div class="mb-6">
-          <label for="password" class="label">Password Confirmation</label>
+          <label for="password_confirmation" class="label"
+            >Password Confirmation</label
+          >
           <input
             type="password"
             v-model="password_confirmation"
             class="input"
-            id="password"
-            placeholder="password_confirmation"
+            id="password_confirmation"
+            placeholder="Password Confirmation"
           />
         </div>
         <button
@@ -62,25 +66,25 @@ export default {
     };
   },
   created() {
-    this.checkSignedIn();
+    this.checkedSignedIn();
   },
   updated() {
-    this.checkSignedIn();
+    this.checkedSignedIn();
   },
   methods: {
-    signin() {
+    signup() {
       this.$http.plain
         .post("/signup", {
           email: this.email,
           password: this.password,
           password_confirmation: this.password_confirmation
         })
-        .then(response => this.signinSuccessful(response))
-        .catch(error => this.signinFailed(error));
+        .then(response => this.signupSuccessful(response))
+        .catch(error => this.signupFailed(error));
     },
-    signinSuccessful(response) {
+    signupSuccessful(response) {
       if (!response.data.csrf) {
-        this.signinFailed(response);
+        this.signupFailed(response);
         return;
       }
       localStorage.csrf = response.data.csrf;
@@ -88,14 +92,14 @@ export default {
       this.error = "";
       this.$router.replace("/records");
     },
-    signinFailed(error) {
+    signupFailed(error) {
       this.error =
         (error.response && error.response.data && error.response.data.error) ||
         "Something went wrong";
       delete localStorage.csrf;
       delete localStorage.signedIn;
     },
-    checkSignedIn() {
+    checkedSignedIn() {
       if (localStorage.signedIn) {
         this.$router.replace("/records");
       }
