@@ -1,24 +1,37 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Used in this build
 
-Things you may want to cover:
+-   Rails 5.2.4
 
-* Ruby version
+-   Ruby 2.5
 
-* System dependencies
+-   gem bcrpt 3.1.7
 
-* Configuration
+-   gem rack-cors
 
-* Database creation
+-   gem redis 4.0ß
 
-* Database initialization
+-   gem jwt-sessions
 
-* How to run the test suite
+-   npm
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+Step
 
-* ...
+1. bundle install
+
+2. brew install redis
+
+3. brew services start redis
+
+4. rails sever
+
+//anothor terminal
+
+5. npm run dev
+
+reference
+
+https://github.com/justalever/recordstore
+
