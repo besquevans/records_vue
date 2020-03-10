@@ -10,7 +10,7 @@ Used in this build
 
 -   gem rack-cors
 
--   gem redis 4.0ß
+-   gem redis 4.0
 
 -   gem jwt-sessions
 
